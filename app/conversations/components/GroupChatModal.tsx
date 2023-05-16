@@ -60,15 +60,15 @@ const GroupChatModal: React.FC<GroupChatModalProps> = ({
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-12">
             <h2 className="text-base font-semibold leading-7 text-gray-900">
-              Create a group chat
+              新建群聊
             </h2>
             <p className="mt-1 text-sm leading-6 text-gray-600">
-              Create a chat with more than 2 people.
+              群聊成员需大于等于2
             </p>
             <div className="mt-10 flex flex-col gap-y-8">
               <Input
                 register={register}
-                label="name"
+                label="昵称"
                 id="name"
                 disabled={isLoading}
                 required
@@ -76,7 +76,7 @@ const GroupChatModal: React.FC<GroupChatModalProps> = ({
               />
               <Select
                 disabled={isLoading}
-                label="Members"
+                label="成员"
                 options={users.map((user) => ({
                   value: user.id,
                   label: user.name,
@@ -98,10 +98,10 @@ const GroupChatModal: React.FC<GroupChatModalProps> = ({
             type="button"
             secondary
           >
-            Cancel
+            取消
           </Button>
           <Button disabled={isLoading} type="submit">
-            Create
+            新建
           </Button>
         </div>
       </form>

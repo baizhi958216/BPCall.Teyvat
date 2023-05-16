@@ -36,7 +36,7 @@ export default function Home() {
           text-gray-900
           "
         >
-          Sign in to your account
+          Hi~您来啦！~
         </h2>
       </div>
       <AuthForm />

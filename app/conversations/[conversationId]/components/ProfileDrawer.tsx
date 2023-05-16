@@ -38,7 +38,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
 
   const statusText = useMemo(() => {
     if (data.isGroup) {
-      return `${data.users.length} members`;
+      return `${data.users.length}名成员`;
     }
     return "Active";
   }, [data]);
@@ -112,7 +112,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                 <IoTrash size={20} />
                               </div>
                               <div className="text-sm font-light text-neutral-600">
-                                Delete
+                                删除该聊天
                               </div>
                             </div>
                           </div>
@@ -125,7 +125,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                 text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0
                                 "
                                   >
-                                    Emails
+                                    用户邮箱地址
                                   </dt>
                                   <dd className="mt-1 text-sm text-gray-900 sm:col-span-2">
                                     {data.users

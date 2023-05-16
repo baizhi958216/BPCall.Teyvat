@@ -63,17 +63,17 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
     <Modal isOpen={isOpen} onClose={onClose}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-12">
-          <div className="border-b bg-gray-900/10 pb-12">
+          <div className="border-b pb-12">
             <h2 className="text-base font-semibold leading-7 text-gray-900">
-              Profile
+              个人信息
             </h2>
             <p className="mt-1 text-sm leading-6 text-gray-600">
-              Edit your public information
+              编辑用户个人资料
             </p>
             <div className="mt-10 flex flex-col gap-y-8">
               <Input
                 disabled={isLoading}
-                label="Name"
+                label="昵称"
                 id="name"
                 errors={errors}
                 required
@@ -81,7 +81,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
               />
               <div>
                 <label className="block text-sm font-medium leading-6 text-gray-900">
-                  Photo
+                  用户头像
                 </label>
                 <div className="mt-2 flex items-center gap-x-3">
                   <Image
@@ -99,7 +99,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
                     uploadPreset="yo9dnvpm"
                   >
                     <Button disabled={isLoading} secondary type="button">
-                      Change
+                      修改
                     </Button>
                   </CldUploadButton>
                 </div>
@@ -108,10 +108,10 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
           </div>
           <div className="mt-6 flex items-center justify-end gap-x-6">
             <Button disabled={isLoading} secondary onClick={onClose}>
-              Cancel
+              取消
             </Button>
             <Button disabled={isLoading} type="submit">
-              Save
+              保存
             </Button>
           </div>
         </div>

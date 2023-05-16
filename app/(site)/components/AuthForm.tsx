@@ -62,11 +62,11 @@ const AuthForm = () => {
       })
         .then((callback) => {
           if (callback?.error) {
-            toast.error("Invalid credentials");
+            toast.error("认证错误");
           }
 
           if (callback?.ok && !callback?.error) {
-            toast.success("Logged in!");
+            toast.success("登录成功!");
             router.push("/users");
           }
         })
@@ -80,11 +80,11 @@ const AuthForm = () => {
     signIn(action, { redirect: false })
       .then((callback) => {
         if (callback?.error) {
-          toast.error("Invalid Credentials");
+          toast.error("认证错误");
         }
 
         if (callback?.ok && !callback?.error) {
-          toast.success("Logged in!");
+          toast.success("登录成功!");
         }
       })
       .finally(() => setIsLoading(false));
@@ -100,12 +100,12 @@ const AuthForm = () => {
               register={register}
               errors={errors}
               id="name"
-              label="Name"
+              label="昵称"
             />
           )}
           <Input
             id="email"
-            label="Email address"
+            label="邮箱地址"
             type="email"
             register={register}
             errors={errors}
@@ -113,7 +113,7 @@ const AuthForm = () => {
           />
           <Input
             id="password"
-            label="Password"
+            label="密码"
             type="password"
             register={register}
             errors={errors}
@@ -121,7 +121,7 @@ const AuthForm = () => {
           />
           <div>
             <Button disabled={isLoading} fullWidth type="submit">
-              {variant === "LOGIN" ? "Sign in" : "Register"}
+              {variant === "LOGIN" ? "登录" : "注册"}
             </Button>
           </div>
         </form>
@@ -140,7 +140,7 @@ const AuthForm = () => {
             </div>
             <div className="relative flex justify-center text-sm">
               <span className="bg-white px-2 text-gray-500">
-                Or continue with
+                第三方认证登录
               </span>
             </div>
           </div>
@@ -150,21 +150,17 @@ const AuthForm = () => {
               icon={BsGithub}
               onClick={() => socialAction("github")}
             />
-            <AuthSocialButton
+            {/* <AuthSocialButton
               icon={BsGoogle}
               onClick={() => socialAction("google")}
-            />
+            /> */}
           </div>
         </div>
 
         <div className="flex gap-2 justify-center text-sm mt-6 px-2 text-gray-500">
-          <div>
-            {variant === "LOGIN"
-              ? "New to Messenger?"
-              : "Already have an account?"}
-          </div>
+          <div>{variant === "LOGIN" ? "新用户?" : "已经拥有本站账号?"}</div>
           <div onClick={toggleVariant} className="underline cursor-pointer">
-            {variant === "LOGIN" ? "Create an account" : "Login"}
+            {variant === "LOGIN" ? "注册" : "马上登录"}
           </div>
         </div>
       </div>

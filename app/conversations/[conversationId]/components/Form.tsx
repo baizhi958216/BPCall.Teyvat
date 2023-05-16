@@ -51,7 +51,7 @@ const Form = () => {
           register={register}
           errors={errors}
           required
-          placeholder="Write a message"
+          placeholder="在这里输入..."
         />
         <button
           type="submit"
