@@ -44,7 +44,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
     if (data.isGroup) {
       return `${data.users.length}名成员`;
     }
-    return isActive ? "在线" : "离线";
+    return isActive ? "当前在线" : "离线";
   }, [data]);
 
   return (

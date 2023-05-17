@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
       return `${conversation.users.length}名成员`;
     }
 
-    return isActive ? "在线" : "离线";
+    return isActive ? "当前在线" : "离线";
   }, [conversation]);
 
   return (
