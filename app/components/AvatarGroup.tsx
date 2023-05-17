@@ -19,6 +19,7 @@ const AvatarGroup: React.FC<AvatarGroupProps> = ({ users }) => {
     <div className="relative h-11 w-11">
       {slicedUsers?.map((user, index) => (
         <div
+          key={user.id}
           className={`
           absolute 
           inline-block 
