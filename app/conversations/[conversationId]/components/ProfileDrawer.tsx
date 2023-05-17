@@ -10,6 +10,7 @@ import Avatar from "@/app/components/Avatar";
 import Modal from "@/app/components/Modal";
 import ConfirmModal from "./ConfirmModal";
 import AvatarGroup from "@/app/components/AvatarGroup";
+import useActiveList from "@/app/hooks/useActiveList";
 
 interface ProfileDrawerProps {
   data: Conversation & {
@@ -28,6 +29,9 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
 
   const [confirmOpen, setConfirmOpen] = useState(false);
 
+  const { members } = useActiveList();
+  const isActive = members.indexOf(otherUser?.email!) !== -1;
+
   const joinedDate = useMemo(() => {
     return format(new Date(otherUser.createAt), "PP");
   }, [otherUser.createAt]);
@@ -40,7 +44,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
     if (data.isGroup) {
       return `${data.users.length}名成员`;
     }
-    return "Active";
+    return isActive ? "在线" : "离线";
   }, [data]);
 
   return (
