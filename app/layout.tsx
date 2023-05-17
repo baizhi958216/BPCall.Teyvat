@@ -9,8 +9,8 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Messager Clone",
-  description: "Messager Clone",
+  title: "提瓦特BB机",
+  description: "旅行者，当你重新踏上旅途之后，一定要记得旅途本身的意义。",
 };
 
 export default function RootLayout({
@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="zh">
       <body className={inter.className}>
         <AuthContext>
           <ToasterContext />

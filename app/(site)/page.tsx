@@ -21,10 +21,10 @@ export default function Home() {
       >
         <Image
           alt="Logo"
-          height="48"
-          width="48"
+          height="56"
+          width="56"
           className="mx-auto w-auto"
-          src="/images/logo.png"
+          src="/images/twt.png"
         />
         <h2
           className="
@@ -36,7 +36,7 @@ export default function Home() {
           text-gray-900
           "
         >
-          Hi~您来啦！~
+          提瓦特BB机
         </h2>
       </div>
       <AuthForm />
