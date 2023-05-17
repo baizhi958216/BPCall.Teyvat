@@ -68,7 +68,7 @@ const GroupChatModal: React.FC<GroupChatModalProps> = ({
             <div className="mt-10 flex flex-col gap-y-8">
               <Input
                 register={register}
-                label="昵称"
+                label="群聊名称"
                 id="name"
                 disabled={isLoading}
                 required
