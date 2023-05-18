@@ -10,6 +10,15 @@ const nextConfig = {
       "lh3.googleusercontent.com",
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/UI",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
