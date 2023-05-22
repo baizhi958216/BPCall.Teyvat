@@ -5,8 +5,6 @@ import Button from "@/app/UI/components/Button";
 import Input from "@/app/UI/components/inputs/Input";
 import { useCallback, useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { BsGithub } from "react-icons/bs";
-import AuthSocialButton from "./AuthSocialButton";
 import { toast } from "react-hot-toast";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -74,6 +72,8 @@ const AuthForm = () => {
     }
   };
 
+  /* 
+  // TODO: OAuth无法完成鉴权
   const socialAction = (action: string) => {
     setIsLoading(true);
 
@@ -88,7 +88,7 @@ const AuthForm = () => {
         }
       })
       .finally(() => setIsLoading(false));
-  };
+  }; */
 
   return (
     <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md ">
@@ -126,7 +126,8 @@ const AuthForm = () => {
           </div>
         </form>
 
-        <div className="mt-6">
+        {/* TODO: OAuth无法完成鉴权 */}
+        {/* <div className="mt-6">
           <div className="relative">
             <div
               className="
@@ -150,13 +151,12 @@ const AuthForm = () => {
               icon={BsGithub}
               onClick={() => socialAction("github")}
             />
-            {/* TODO: 谷歌OAuth无法完成鉴权 */}
-            {/* <AuthSocialButton
+            <AuthSocialButton
               icon={BsGoogle}
               onClick={() => socialAction("google")}
-            /> */}
+            />
           </div>
-        </div>
+        </div> */}
 
         <div className="flex gap-2 justify-center text-sm mt-6 px-2 text-gray-500">
           <div>{variant === "LOGIN" ? "新用户?" : "已经拥有本站账号?"}</div>

@@ -1,6 +1,5 @@
 import NextAuth, { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import GithubProvider from "next-auth/providers/github";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
 import prisma from "@/app/BLL/libs/prismadb";
@@ -9,6 +8,8 @@ import authorizeUser from "@/app/DAL/auth/authorizeUser";
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
+    /* 
+    // TODO: OAuth无法完成鉴权
     GithubProvider({
       clientId: process.env.GITHUB_ID as string,
       clientSecret: process.env.GITHUB_SECRET as string,
@@ -16,7 +17,6 @@ export const authOptions: AuthOptions = {
         timeout: 50000,
       },
     }),
-    /* // TODO: 谷歌OAuth无法完成鉴权
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
