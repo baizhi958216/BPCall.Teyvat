@@ -5,7 +5,7 @@ import Button from "@/app/UI/components/Button";
 import Input from "@/app/UI/components/inputs/Input";
 import { useCallback, useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { BsGithub, BsGoogle } from "react-icons/bs";
+import { BsGithub } from "react-icons/bs";
 import AuthSocialButton from "./AuthSocialButton";
 import { toast } from "react-hot-toast";
 import { signIn, useSession } from "next-auth/react";
@@ -150,6 +150,7 @@ const AuthForm = () => {
               icon={BsGithub}
               onClick={() => socialAction("github")}
             />
+            {/* TODO: 谷歌OAuth无法完成鉴权 */}
             {/* <AuthSocialButton
               icon={BsGoogle}
               onClick={() => socialAction("google")}
