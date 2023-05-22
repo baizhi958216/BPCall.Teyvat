@@ -8,5 +8,9 @@ interface AuthContextProps {
 }
 
 export default function AuthContext({ children }: AuthContextProps) {
-  return <SessionProvider basePath="/BLL/api/auth">{children}</SessionProvider>;
+  return (
+    <SessionProvider basePath="/BLL/api/auth/provider">
+      {children}
+    </SessionProvider>
+  );
 }

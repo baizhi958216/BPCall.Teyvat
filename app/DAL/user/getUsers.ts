@@ -1,6 +1,6 @@
 import prisma from "@/app/BLL/libs/prismadb";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/BLL/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/BLL/api/auth/provider/route";
 
 const getUsers = async () => {
   const session = await getServerSession(authOptions);
