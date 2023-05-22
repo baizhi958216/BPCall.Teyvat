@@ -39,6 +39,7 @@ const Select: React.FC<SelectProps> = ({
           classNames={{
             control: () => "text-sm",
           }}
+          placeholder="选择2个或2个以上成员..."
         />
       </div>
     </div>
