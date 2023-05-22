@@ -1,25 +1,21 @@
-import getCurrentUser from "@/app/DAL/getCurrentUser";
+import getCurrentUser from "@/app/DAL/user/getCurrentUser";
 import { NextResponse } from "next/server";
-import prisma from "@/app/BLL/libs/prismadb";
+import updateUser from "@/app/DAL/user/updateUser";
 
 export async function POST(request: Request) {
   try {
     const currentUser = await getCurrentUser();
     const body = await request.json();
-    const { name, image } = body;
     if (!currentUser?.id) {
       return new NextResponse("Unauthorize", { status: 401 });
     }
 
-    const updatedUser = await prisma.user.update({
-      where: {
-        id: currentUser.id,
-      },
-      data: {
-        image: image,
-        name: name,
-      },
+    // 更新用户资料
+    const updatedUser = await updateUser({
+      ...body,
+      currentUserId: currentUser.id,
     });
+
     return NextResponse.json(updatedUser);
   } catch (error) {
     console.log(error, "ERROR_SETTINGS");

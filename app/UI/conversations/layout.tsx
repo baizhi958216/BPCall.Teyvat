@@ -1,5 +1,5 @@
-import getConversations from "@/app/DAL/getConversations";
-import getUsers from "@/app/DAL/getUsers";
+import getConversations from "@/app/DAL/conversations/getConversations";
+import getUsers from "@/app/DAL/user/getUsers";
 import Sidebar from "../components/sidebar/Sidebar";
 import ConversationList from "./components/ConversationList";
 

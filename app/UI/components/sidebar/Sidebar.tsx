@@ -1,4 +1,4 @@
-import getCurrentUser from "@/app/DAL/getCurrentUser";
+import getCurrentUser from "@/app/DAL/user/getCurrentUser";
 import DesktopSidebar from "./DesktopSidebar";
 import MobileFooter from "./MobileFooter";
 

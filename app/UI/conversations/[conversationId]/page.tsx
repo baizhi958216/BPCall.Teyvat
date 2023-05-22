@@ -1,5 +1,5 @@
-import getConversationById from "@/app/DAL/getConversationById";
-import getMessages from "@/app/DAL/getMessages";
+import getConversationById from "@/app/DAL/conversations/getConversationById";
+import getMessages from "@/app/DAL/message/getMessages";
 import EmptyState from "@/app/UI/components/EmptyState";
 import Header from "./components/Header";
 import Body from "./components/Body";

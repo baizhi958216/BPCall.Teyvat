@@ -1,7 +1,8 @@
-import getCurrentUser from "@/app/DAL/getCurrentUser";
+import getCurrentUser from "@/app/DAL/user/getCurrentUser";
 import { NextResponse } from "next/server";
-import prisma from "@/app/BLL/libs/prismadb";
 import { pusherServer } from "@/app/UI/libs/pusher";
+import createMessage from "@/app/DAL/message/createMessage";
+import updateConversation from "@/app/DAL/message/updateConversation";
 
 export async function POST(request: Request) {
   try {
@@ -11,52 +12,20 @@ export async function POST(request: Request) {
     if (!currentUser?.id || !currentUser?.email) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
-    const newMessage = await prisma.message.create({
-      data: {
-        body: message,
-        image: image,
-        conversation: {
-          connect: {
-            id: conversationId,
-          },
-        },
-        sender: {
-          connect: {
-            id: currentUser.id,
-          },
-        },
-        seen: {
-          connect: {
-            id: currentUser.id,
-          },
-        },
-      },
-      include: {
-        seen: true,
-        sender: true,
-      },
-    });
-    const updatedConversation = await prisma.conversation.update({
-      where: {
-        id: conversationId,
-      },
-      data: {
-        lastMessageAt: new Date(),
-        messages: {
-          connect: {
-            id: newMessage.id,
-          },
-        },
-      },
-      include: {
-        users: true,
-        messages: {
-          include: {
-            seen: true,
-          },
-        },
-      },
-    });
+
+    // 发送消息
+    const newMessage = await createMessage(
+      message,
+      image,
+      conversationId,
+      currentUser.id
+    );
+
+    // 发送消息后更新聊天历史
+    const updatedConversation = await updateConversation(
+      conversationId,
+      newMessage.id
+    );
 
     await pusherServer.trigger(conversationId, "messages:new", newMessage);
 

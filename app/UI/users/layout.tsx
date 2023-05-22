@@ -1,4 +1,4 @@
-import getUsers from "@/app/DAL/getUsers";
+import getUsers from "@/app/DAL/user/getUsers";
 import Sidebar from "../components/sidebar/Sidebar";
 import UserList from "./UserList";
 
