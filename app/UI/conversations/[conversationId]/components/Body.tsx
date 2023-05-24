@@ -18,10 +18,12 @@ const Body: React.FC<BodyProps> = ({ initialMessages }) => {
 
   const { conversationId } = useConversation();
 
+  // 副作用: 发送消息设置已读
   useEffect(() => {
     axios.post(`/BLL/api/conversations/${conversationId}/seen`);
   }, [conversationId]);
 
+  // 副作用: 双方会话消息订阅
   useEffect(() => {
     pusherClient.subscribe(conversationId);
     // 将消息滚动到底部

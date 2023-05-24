@@ -14,13 +14,13 @@ export async function POST(request: Request, { params }: { params: IParams }) {
     const { conversationId } = params;
 
     if (!currentUser) {
-      return new NextResponse("Unauthorized", { status: 401 });
+      return new NextResponse("未登录用户...", { status: 401 });
     }
 
     const conversation = await getMessageSeen(conversationId!);
 
     if (!conversation) {
-      return new NextResponse("Invalid ID");
+      return new NextResponse("会话ID非法...");
     }
 
     // 最后一条消息
@@ -53,7 +53,7 @@ export async function POST(request: Request, { params }: { params: IParams }) {
 
     return NextResponse.json(updatedMessage);
   } catch (error) {
-    console.log(error, "ERROR_MESSAGE_SEEN");
-    return new NextResponse("Internal Error", { status: 500 });
+    console.log(error, "消息读取状态异常...");
+    return new NextResponse("消息读取状态异常...", { status: 500 });
   }
 }

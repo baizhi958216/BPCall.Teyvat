@@ -7,7 +7,7 @@ export async function POST(request: Request) {
     const currentUser = await getCurrentUser();
     const body = await request.json();
     if (!currentUser?.id) {
-      return new NextResponse("Unauthorize", { status: 401 });
+      return new NextResponse("未登录用户...", { status: 401 });
     }
 
     // 更新用户资料
@@ -18,7 +18,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(updatedUser);
   } catch (error) {
-    console.log(error, "ERROR_SETTINGS");
-    return new NextResponse("Internal Error", { status: 500 });
+    console.log(error, "修改用户资料失败...");
+    return new NextResponse("修改用户资料失败...", { status: 500 });
   }
 }

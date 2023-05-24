@@ -12,11 +12,13 @@ export async function POST(request: Request) {
     const { userId, isGroup, members, name } = body;
 
     if (!currentUser?.id || !currentUser?.email) {
-      return new NextResponse("Unauthorized", { status: 401 });
+      return new NextResponse("未登录用户...", { status: 401 });
     }
 
     if (isGroup && (!members || members.length < 2 || !name)) {
-      return new NextResponse("Invalid data", { status: 400 });
+      return new NextResponse("用户不存在或群聊用户数量小于2...", {
+        status: 400,
+      });
     }
 
     // 创建群聊
@@ -59,6 +61,6 @@ export async function POST(request: Request) {
 
     return NextResponse.json(newConversation);
   } catch (error) {
-    return new NextResponse("Internal Error", { status: 500 });
+    return new NextResponse("创建会话失败...", { status: 500 });
   }
 }

@@ -34,6 +34,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
     return session.data?.user?.email;
   }, [session.data?.user?.email]);
 
+  // 副作用: 更新消息列表订阅
   useEffect(() => {
     if (!pusherKey) {
       return;

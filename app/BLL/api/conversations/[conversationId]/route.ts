@@ -17,7 +17,7 @@ export async function DELETE(
     const currentUser = await getCurrentUser();
 
     if (!conversationId) {
-      return new NextResponse("Unauthorized", { status: 401 });
+      return new NextResponse("未登录用户...", { status: 401 });
     }
 
     // 删除聊天前确认是否存在该聊天
@@ -45,7 +45,7 @@ export async function DELETE(
 
     return NextResponse.json(deletedConversation);
   } catch (error: any) {
-    console.log(error, "ERROR_CONVERSATION_DELETE");
-    return new NextResponse("Internal Error", { status: 500 });
+    console.log(error, "删除会话失败...");
+    return new NextResponse("删除会话失败...", { status: 500 });
   }
 }

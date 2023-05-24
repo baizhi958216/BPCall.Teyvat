@@ -7,6 +7,7 @@ const useActiveChannel = () => {
   const { set, add, remove } = useActiveList();
   const [activeChannel, setActiveChannel] = useState<Channel | null>(null);
 
+  // 副作用: 用户在线状态订阅
   useEffect(() => {
     let channel = activeChannel;
 
