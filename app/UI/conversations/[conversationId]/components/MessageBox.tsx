@@ -65,6 +65,8 @@ const MessageBox: React.FC<MessageBoxProp> = ({ isLast, data }) => {
               src={data.image}
               className="object-cover cursor-pointer hover:scale-110 transition translate"
             />
+          ) : data.audio ? (
+            <audio src={"/media/" + data.audio} controls></audio>
           ) : (
             <div>{data.body}</div>
           )}

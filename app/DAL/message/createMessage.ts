@@ -2,6 +2,7 @@ import prisma from "@/app/BLL/libs/prismadb";
 
 const createMessage = async (
   reqMessage: any,
+  reqAudio: any,
   reqImage: any,
   reqConversationId: any,
   currentUserId: string
@@ -9,6 +10,7 @@ const createMessage = async (
   return await prisma.message.create({
     data: {
       body: reqMessage,
+      audio: reqAudio,
       image: reqImage,
       conversation: {
         connect: {

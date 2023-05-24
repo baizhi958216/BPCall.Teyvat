@@ -8,14 +8,15 @@ export async function POST(request: Request) {
   try {
     const currentUser = await getCurrentUser();
     const body = await request.json();
-    const { message, image, conversationId } = body;
+    const { message, image, audio, conversationId } = body;
     if (!currentUser?.id || !currentUser?.email) {
-      return new NextResponse("Unauthorized", { status: 401 });
+      return new NextResponse("未登录用户...", { status: 401 });
     }
 
     // 发送消息
     const newMessage = await createMessage(
       message,
+      audio,
       image,
       conversationId,
       currentUser.id
@@ -41,7 +42,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(newMessage);
   } catch (error) {
-    console.log(error, "ERROR_MESSAGES");
-    return new NextResponse("InternalError", { status: 500 });
+    console.log(error, "消息发送失败...");
+    return new NextResponse("消息发送失败...", { status: 500 });
   }
 }
