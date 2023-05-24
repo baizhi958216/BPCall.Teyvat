@@ -30,7 +30,7 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
     }
 
     return isActive ? "当前在线" : "离线";
-  }, [conversation]);
+  }, [conversation, isActive]);
 
   return (
     <>

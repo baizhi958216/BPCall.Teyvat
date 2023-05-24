@@ -7,7 +7,6 @@ import { Fragment, useMemo, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { IoClose, IoTrash } from "react-icons/io5";
 import Avatar from "@/app/UI/components/Avatar";
-import Modal from "@/app/UI/components/Modal";
 import ConfirmModal from "./ConfirmModal";
 import AvatarGroup from "@/app/UI/components/AvatarGroup";
 import useActiveList from "@/app/UI/hooks/useActiveList";
@@ -45,7 +44,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
       return `${data.users.length}名成员`;
     }
     return isActive ? "当前在线" : "离线";
-  }, [data]);
+  }, [data, isActive]);
 
   return (
     <>

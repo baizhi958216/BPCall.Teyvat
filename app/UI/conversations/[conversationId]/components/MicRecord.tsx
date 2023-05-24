@@ -10,7 +10,7 @@ interface MicRecordProps {
   recordingBlob?: Blob;
   startRecording: () => void;
   stopRecording: () => void;
-  setLongPressed: any;
+  setLongPressed: (arg0: boolean) => void;
 }
 
 const MicRecord: React.FC<MicRecordProps> = ({
@@ -35,13 +35,13 @@ const MicRecord: React.FC<MicRecordProps> = ({
           conversationId,
         });
       });
-  }, [recordingBlob]);
+  }, [recordingBlob, conversationId]);
 
   const [enabled, setEnabled] = useState(true);
 
   const callback = useCallback(() => {
     setLongPressed(true);
-  }, []);
+  }, [setLongPressed]);
 
   const bind = useLongPress(enabled ? callback : null, {
     onStart: () => {
