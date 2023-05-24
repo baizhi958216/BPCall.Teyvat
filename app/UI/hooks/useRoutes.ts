@@ -1,6 +1,7 @@
 import { useMemo } from "react";
-import { useParams, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { HiChat } from "react-icons/hi";
+import { AiFillGithub } from "react-icons/ai";
 import { HiArrowLeftOnRectangle, HiUsers } from "react-icons/hi2";
 import { signOut } from "next-auth/react";
 
@@ -29,6 +30,11 @@ const useRoutes = () => {
         href: "/UI",
         onClick: () => signOut({ callbackUrl: "/UI" }),
         icon: HiArrowLeftOnRectangle,
+      },
+      {
+        label: "Github",
+        href: "https://github.com/baizhi958216/BPCall.Teyvat/",
+        icon: AiFillGithub,
       },
     ],
     [pathname, conversationId]
