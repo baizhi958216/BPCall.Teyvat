@@ -6,8 +6,9 @@ import clsx from "clsx";
 import { format } from "date-fns";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import ImageModal from "./ImageModal";
+import { HiStop, HiPlay } from "react-icons/hi";
 
 interface MessageBoxProp {
   isLast?: boolean;
@@ -35,8 +36,27 @@ const MessageBox: React.FC<MessageBoxProp> = ({ isLast, data }) => {
   const message = clsx(
     "text-sm w-fit overflow-hidden",
     isOwn ? "bg-sky-500 text-white" : "bg-gray-100",
-    data.image ? "rounded-md p-0" : "rounded-full py-2 px-3"
+    data.image ? "rounded-md p-0" : "rounded-full py-2 px-3",
+    data.audio ? "bg-white" : ""
   );
+
+  const [oggPlaying, setoggPlaying] = useState(false);
+
+  const audioObj = useRef<HTMLAudioElement>();
+
+  const toggleAudio = (oggName: string) => {
+    if (!audioObj.current || !audioObj.current.src.includes(oggName)) {
+      audioObj.current = new Audio(`/media/${oggName}`);
+    }
+    if (oggPlaying == false) {
+      setoggPlaying(true);
+      audioObj.current.currentTime = 0;
+      audioObj.current.play();
+    } else {
+      setoggPlaying(false);
+      audioObj.current.pause();
+    }
+  };
 
   return (
     <div className={container}>
@@ -66,7 +86,16 @@ const MessageBox: React.FC<MessageBoxProp> = ({ isLast, data }) => {
               className="object-cover cursor-pointer hover:scale-110 transition translate"
             />
           ) : data.audio ? (
-            <audio src={"/media/" + data.audio} controls></audio>
+            <div onClick={() => toggleAudio(data.audio!)}>
+              <div className="text-black flex items-center cursor-pointer">
+                {oggPlaying ? (
+                  <HiStop size={35} className="text-sky-500" />
+                ) : (
+                  <HiPlay size={35} className="text-sky-500" />
+                )}
+                <div>||||||||||||||||||||||||||||</div>
+              </div>
+            </div>
           ) : (
             <div>{data.body}</div>
           )}
