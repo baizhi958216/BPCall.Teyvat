@@ -2,7 +2,6 @@
 
 import { useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import { Conversation, Message, User } from "@prisma/client";
 import { format } from "date-fns";
 import { useSession } from "next-auth/react";
 import clsx from "clsx";
@@ -53,6 +52,9 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
     }
     if (lastMessage?.body) {
       return lastMessage.body;
+    }
+    if (lastMessage?.audio) {
+      return "[语音]";
     }
     return "开始了聊天";
   }, [lastMessage]);
