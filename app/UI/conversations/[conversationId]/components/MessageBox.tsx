@@ -52,6 +52,9 @@ const MessageBox: React.FC<MessageBoxProp> = ({ isLast, data }) => {
       setoggPlaying(true);
       audioObj.current.currentTime = 0;
       audioObj.current.play();
+      audioObj.current.addEventListener("ended", () => {
+        setoggPlaying(false);
+      });
     } else {
       setoggPlaying(false);
       audioObj.current.pause();
