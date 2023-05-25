@@ -50,13 +50,13 @@ const Form = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="flex items-center gap-2 lg:gap-4 w-full"
       >
-        <MicRecord
+        {/* <MicRecord
           conversationId={conversationId}
           startRecording={startRecording}
           stopRecording={stopRecording}
           recordingBlob={recordingBlob}
           setLongPressed={setLongPressed}
-        />
+        /> */}
         {(!longPressed && (
           <MessageInput
             id="message"
