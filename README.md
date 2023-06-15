@@ -1,3 +1,5 @@
+# 新玩具: [基于Nuxt的BPCall.Astral](https://github.com/baizhi958216/BPCall.Astral)
+
 <p align="center">
     <img src="./public/images/twt.png" height="128">
     <div align="center">提瓦特 BB 机</div>
